@@ -9,7 +9,7 @@ find . -type f  \
  \( -not -path './navit/support/*' -a -not -path './navit/fib-1.1/*' \) \
  -a \( -iname '*.c' -o -iname '*.cpp' -o -iname '*.java' \) \
 -exec \
- astyle --indent=spaces=4 --style=attach -n --max-code-length=120 {} \;
+ astyle --indent=spaces=4 --style=attach -n --max-code-length=120 -xf -xh {} \;
 
 #git commit -am 'cleanup:global:Use astyle to reformat everything'
 
@@ -19,6 +19,6 @@ find . -type f \( -not -path './navit/support/*' -a -not -path './navit/fib-1.1/
 
 #git commit -am 'cleanup:cmake:remove trailing spaces'
 
-find . -iname 'CMakeLists.txt' -exec ex +"set syn=cmake" +"set noexpandtab" +"norm gg=G" -cwq {} \;
-
+# Depending on the local configs, this could generate unexpected output. This needs rework.
+# find . -iname 'CMakeLists.txt' -exec ex +"set syn=cmake" +"set noexpandtab" +"norm gg=G" -cwq {} \;
 #git commit -am 'cleanup:cmake:retab all CMakeLists.txt files'
